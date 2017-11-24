@@ -9,7 +9,8 @@ WORKDIR /home/postgres/pg8000
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y libossp-uuid16 libossp-uuid-dev libssl-dev wget bzip2 \
     libreadline-dev libgss3 libgss-dev libxml2 libxml2-dev libkrb5-3 libkrb5-dev build-essential \
-    ca-certificates unzip openjdk-7-jre-headless python-pip && \
+    ca-certificates unzip openjdk-7-jre-headless python-openssl && \
+    wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && \
   pip install tox && \
   su postgres -c " \
   bash ./circleci/install-postgresql-9.1.22.sh && \
@@ -17,12 +18,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
   bash ./circleci/install-postgresql-9.3.13.sh && \
   bash ./circleci/install-postgresql-9.4.8.sh && \
   bash ./circleci/install-postgresql-9.5.3.sh && \
-  bash ./circleci/install-python-2.7.9.sh && \
   bash ./circleci/install-python-3.3.5.sh && \
   bash ./circleci/install-python-3.4.2.sh && \
   bash ./circleci/install-python-3.5.1.sh && \
   bash ./circleci/install-pypy-2.4.0.sh && \
-  bash ./circleci/install-pypy3-2.3.1.sh && \
+  bash ./circleci/install-pypy3.3-5.5.sh && \
   bash ./circleci/install-jython-2.7.0.sh \
   " && \
   DEBIAN_FRONTEND=noninteractive apt-get remove -y libossp-uuid-dev wget bzip2 libreadline-dev \
