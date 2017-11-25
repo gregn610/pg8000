@@ -40,4 +40,4 @@ ENV PG8000_TEST_9_4="{\"user\": \"postgres\", \"password\": \"pw\", \"port\": 54
 ENV PG8000_TEST_9_5="{\"user\": \"postgres\", \"password\": \"pw\", \"port\": 5495}"
 
 USER postgres
-CMD bash ./circleci/run-postgres-and-tox.sh
+CMD bash ./circleci/run-postgresql-and-tox.sh
